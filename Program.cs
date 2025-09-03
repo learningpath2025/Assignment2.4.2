@@ -11,33 +11,28 @@
         {
             try
             {
-                Console.Write("Input the 1st number :");
-                double num1 = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Input the 2nd number :");
-                double num2 = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Input the 3rd number :");
-                double num3 = Convert.ToDouble(Console.ReadLine());
-                string result = FindLargest(num1, num2, num3);
-                Console.WriteLine(result);
+                Console.Write("How many numbers are you planning to compare: ");
+                int n = Convert.ToInt32(Console.ReadLine());
+                int[] numbers = new int[n];
+                for (int i = 0; i < n; i++)
+                {
+                    Console.Write($"Input the {i + 1} number :");
+                    numbers[i] = Convert.ToInt32(Console.ReadLine());
+                }
+                int maxIndex = 0;
+                for (int i = 1; i < n; i++)
+                {
+                    if (numbers[i] > numbers[maxIndex])
+                    {
+                        maxIndex = i;
+                    }
+                }
+                Console.WriteLine($"Largest value is {numbers[maxIndex]}");
+                Console.WriteLine($"Index position of {numbers[maxIndex]} is {maxIndex}");
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Exception: {e}");
-            }
-        }
-        public static string FindLargest(double num1, double num2, double num3)
-        {
-            if (num1 >= num2 && num1 >= num3)
-            {
-                return "The 1st Number is the greatest among three";
-            }
-            else if (num2 >= num1 && num2 >= num3)
-            {
-                return "The 2nd Number is the greatest among three";
-            }
-            else
-            {
-                return "The 3rd Number is the greatest among three";
             }
         }
     }
